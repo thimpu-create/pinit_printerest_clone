@@ -1,0 +1,50 @@
+            <!-- <li><a id="" class="dropdown-item" href="{% url 'boards:boardform' %}">Create Board</a></li> -->
+<!-- <a href="{% url 'accounts:follow' user.username %}" class="red-btn btn ps-3 pt-2 pb-2 pe-3 text-white ms-1 me-4"> -->
+
+
+
+
+
+
+<!-- {% extends "base.html" %}
+{% block content %}
+
+<div id="masonry">
+    {% for pin in pins %}
+    <a class="m-2" href="">
+        {% if pin.get_type == 'video' %}
+        <video autoplay muted loop>
+            <source src="{{ pin.file.url }}">
+        </video>
+        {% elif pin.get_type == 'image' %}
+        <img src="{{ pin.file.url }}">
+        {% endif %}
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %} -->
+
+
+
+
+<!-- <center>
+    <h1>
+      Responsive, pinterest-style masonic tiles using CSS Grid (only - no JS, no flexbox).
+    </h1>
+    <p>
+      Change browser width and note how everything reflows, _and_ the red tile numbers stay in correct order.
+    </p>
+</center>
+<div class="results">    
+    <div class="ht1">
+        <img src="{{ pin.file.url }}"/>
+        <span>50</span>
+            Mekons Live at Starry Plough on...
+    </div>
+</div> -->
+
+
+{% url 'pins:pin_detail' pin.id %}
+
+{% url 'boards:remove_from_board' pin.id board.id %}
