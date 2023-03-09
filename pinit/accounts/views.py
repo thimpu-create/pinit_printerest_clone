@@ -4,6 +4,8 @@ from django.http import Http404,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
+import json
+
 from django.contrib import messages
 
 from boards.forms import CreateBoardForm
@@ -73,8 +75,17 @@ def profile(request, username):
     user = get_object_or_404(User, username=username)
     boards = user.board_user.all()
     created_boards = Board.objects.filter(User = user)
-    pins = Pin.objects.filter(user=request.user)
+    pins = Pin.objects.filter(user=request.user).defer('date_created')
+
+    # j_file = pins.values()
+    # with open("pins.json",'w' ) as file:
+    #     for f in j_file:
+    #         f = json.dumps(f)
+    #         file.write(f)
+    # print('Done')
+
     pins_on_board = Pin.objects.filter(board = created_boards[0].id)
+    # print(pins_on_board)
     is_following = Follow.objects.filter(user=user)
     is_followed_by = Follow.objects.filter(following=user)
     create_board_form = CreateBoardForm()

@@ -224,29 +224,6 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	background-size: cover;
 }
 
-/* .save-pin-btn {
-	position: absolute;
-	margin-left: 155px;
-	margin-top: 15px;
-	z-index: 1;
-	display: none;
-}
-
-.more-btn {
-	position: absolute;
-	margin-left: 175px;
-	margin-top: 350px;
-	z-index: 1;
-	display: none;
-}
-
-.share-btn {
-	position: absolute;
-	margin-left: 103px;
-	margin-top: 350px;
-	z-index: 1;
-	display: none;
-} */
 .save-pin-btn {
 	position: absolute;
 	right:1em;
@@ -285,21 +262,7 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 
 .item:hover .share-btn{
 	display: inline-block;
-}
-
-/* .image-effect{
-	height: 100px;
-	width: 100px;
-	position: relative;
-} */
-/* .save-pin-btn:hover{
-	display: absolute;
-} */
-/* pinterest css grid */
-/* .item:hover .save-pin-btn{
-	display: inline-block;
-
-} */ 
+} 
 
 .item .hover_cards{
 	display: inline-block;
@@ -401,4 +364,64 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	width: 100%;
 	text-align: center;
 	padding-top: 0.8em;
+}
+
+.item .dropdown-share{
+	position: absolute;
+	right: 4em;
+	bottom: 1em;
+	z-index: 1;
+	display:none;
+	background-color: #ffffff;
+	width: 4em;
+	height: 2.5em;
+	border-radius: 2em;
+}
+
+.share-btn{
+	right: 0.8em;
+	bottom: 0.53em;
+	color: #0e0e0e;
+	text-decoration: none;
+}
+
+.item:hover .dropdown-share{
+	display: inline-block;
+}
+
+.tweet-this a{
+	color: #0e0e0e;
+	text-decoration: none;
+}
+.whatsapp-this a{
+	color: #0e0e0e;
+	text-decoration: none;
+}
+
+.facebook-this a{
+	color: #0e0e0e;
+	text-decoration: none;
+}
+
+.copy-this button{
+	color: #0e0e0e;
+	text-decoration: none;
+	border: 0px;
+	background-color: #ffffff;
+	padding: 0.5em;
+	border-radius: 0.4em;
+}
+
+ul .share-item{
+	/* transform: translate3d(-61px, 40.5px, 0px)!important; */
+	text-align: center;
+	padding: 0.5em;
+}
+
+.share-item:hover{
+	border-radius: 0.4em;
+	background-color: #d1d1d1;
+}
+.copy-btn-class:hover{
+	background-color: #d1d1d1;
 }
