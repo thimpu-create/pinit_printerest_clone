@@ -425,3 +425,10 @@ ul .share-item{
 .copy-btn-class:hover{
 	background-color: #d1d1d1;
 }
+
+.item .board-sub-label{
+    /* font-weight: 600; */
+    font-size: 15px;
+    color: #848484;
+    /* font-family: inherit; */
+}

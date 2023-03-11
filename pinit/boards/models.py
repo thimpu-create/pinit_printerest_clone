@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 from django.contrib.auth.models import User
@@ -10,6 +11,7 @@ class Board(models.Model):
     cover = models.ImageField(upload_to='boards',default='boards/default.png')
     is_private = models.BooleanField(default=False)
     description = models.CharField(max_length=255,blank=True)
+    date_created = models.DateTimeField(default=timezone.now)
 
 
     def __str__(self):

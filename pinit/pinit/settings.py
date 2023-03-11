@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'pins',
     'boards',
     'django_social_share',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

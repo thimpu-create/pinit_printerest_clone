@@ -21,7 +21,8 @@
           <li><a style='border-radius: 50px; font-size: 15px;' href="{% url 'home:home' %}" class="ms-3 nav-link px-2 text-white bg-black"><b>Home</b></a></li>
           <li><a href="#" class="ms-1 nav-link px-2 link-dark"><b>Today</b></a></li>
         </ul>
-        <form action="" class="col-12 w-75 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <form method = "POST" action="{% url 'home:search-pins' %}" class="col-12 w-75 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          {% csrf_token %}
           <input name="q" style="background-color: #e1e1e1;" type="search" class="pt-2 pb-2 form-control border rounded-pill" placeholder="Search" aria-label="Search">
         </form>
         <div class="ms-">

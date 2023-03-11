@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from . forms import CreatePinForm
 # Create your views here.
-from .models import Pin
+from .models import Pin,Board
 
 
 from django.contrib.auth.decorators import login_required
@@ -13,7 +13,7 @@ def create_pin(request):
         form = CreatePinForm(request.user,request.POST,request.FILES)
         if form.is_valid():
             forms=form.cleaned_data
-            Pin.objects.create(
+            p=Pin.objects.create(
                 user = request.user,
                 board = forms['board'],
                 file = forms['file'],
@@ -21,9 +21,11 @@ def create_pin(request):
                 link = forms['link'],
                 description = forms['description']
             )
+            b=Board.objects.filter(User = request.user, title = forms['board']).first()
+            b.pins.add(p)
             # print(title1)
             # form.save()
-            return redirect( 'accounts:profile',request.user.username)
+            return redirect( 'accounts:profile_saved',request.user.username)
             # return HttpResponse("Your pin is saved")
     form = CreatePinForm(request.user)
     return render(request,"create_pin.html",{'form':form})

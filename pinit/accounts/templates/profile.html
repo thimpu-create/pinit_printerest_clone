@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %}
 {% block content %}
 <div class="col-md-1"></div>
 <div class="col-md-10 text-center">
@@ -104,12 +105,8 @@
                 <a class="" href="{% url 'boards:board_detail' username=board.User.id board_name=board.title %}">
                     <img src="{{ board.cover.url }}" alt="">
                     <label class="board-label">{{ board.title }}</label><br>
-                    <label class="text-muted board-sub-label">{{ board.pins.count }} Pins</label><br>
-                    <label class="text-muted board-sub-label">{{ board.User.id }} </label><br>
-                    <label class="text-muted board-sub-label">{{ object.pins.count }} </label><br>
-                    
-
                 </a>
+                <p class="board-sub-label "> {{ board.pins.count }} Pins {{ board.date_created|naturaltime }}</p><br>
             </div>
             {% endfor %} 
         </div>

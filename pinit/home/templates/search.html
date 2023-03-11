@@ -1,10 +1,9 @@
 {% extends "masonry.html" %}
 {% load social_share %}
 {% block content %}
-
-
     {% for pin in pins %}
         <div class="item">
+            
             <a class=" hover_cards" href="" >
     <form method="POST" action="{% url 'home:save-pin' pin.id %}">
         {% csrf_token %}

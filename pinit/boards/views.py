@@ -37,7 +37,7 @@ def create_board(request):
     
 @login_required
 def board_detail(request, username, board_name):
-    board = get_object_or_404(Board,title=board_name)
+    board = get_object_or_404(Board,User = request.user, title=board_name)
     pins = board.pins.all()
     context = {'pins': pins, 'board': board}
     return render(request, 'board_detail.html', context)

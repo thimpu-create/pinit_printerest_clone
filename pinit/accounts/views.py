@@ -36,6 +36,7 @@ def user_register(request):
                     fname = data['fname'],
                     lname = data['lname']
                 )
+                Board.objects.create(User=user,title="profile")
                 # return HttpResponse('Succesful')
                 return redirect('accounts:user_login')
             else:
@@ -76,16 +77,7 @@ def profile(request, username):
     boards = user.board_user.all()
     created_boards = Board.objects.filter(User = user)
     pins = Pin.objects.filter(user=request.user).defer('date_created')
-
-    # j_file = pins.values()
-    # with open("pins.json",'w' ) as file:
-    #     for f in j_file:
-    #         f = json.dumps(f)
-    #         file.write(f)
-    # print('Done')
-
     pins_on_board = Pin.objects.filter(board = created_boards[0].id)
-    # print(pins_on_board)
     is_following = Follow.objects.filter(user=user)
     is_followed_by = Follow.objects.filter(following=user)
     create_board_form = CreateBoardForm()
