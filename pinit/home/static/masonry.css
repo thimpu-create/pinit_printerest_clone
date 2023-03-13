@@ -227,7 +227,7 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 .save-pin-btn {
 	position: absolute;
 	right:1em;
-	top: 2.5em;
+	top: 0.5em;
 	z-index: 1;
 	display: none;
 }

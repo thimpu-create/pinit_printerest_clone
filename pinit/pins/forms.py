@@ -1,5 +1,5 @@
 from django import forms
-from . models import Pin,Board
+from . models import Pin,Board,Comment
 
 class CreatePinForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,29 @@ class CreatePinForm(forms.ModelForm):
                 visible.field.widget.attrs['class'] = 'board-input border form-control'
             else:
                 visible.field.widget.attrs['class'] = 'form-control border rounded-pill'
+
+
+class SaveToBoard(forms.ModelForm):
+    class Meta:
+        model = Pin
+        fields = ['board']
+
+    def __init__(self, user, *args, **kwargs):
+        super(SaveToBoard, self).__init__(*args, **kwargs)
+        self.fields['board'].queryset = Board.objects.filter(User=user)
+        for visible in self.visible_fields():
+            if visible.name == 'board':
+                visible.field.widget.attrs['class'] = 'board-input border form-control'
+
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['text'].widget.attrs['placeholder'] = 'Add comment'
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control rounded-pill border'

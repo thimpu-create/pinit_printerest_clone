@@ -221,3 +221,24 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 
 /* pinterest css grid */
 
+
+.following-btn{
+	background-color: #1b7da7;
+	color: #ffffff;
+	text-decoration: none !important;
+	border-radius: 2em;
+	padding: 0.5em;
+}
+
+.follow-btn{
+	background-color: #0e0e0e;
+	color: #ffffff;
+	text-decoration: none !important;
+	border-radius: 2em;
+	padding: 0.5em;
+}
+
+/* .follow-btn:hover{
+	background-color: #
+} */
+
