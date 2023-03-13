@@ -84,3 +84,10 @@ def add_comment(request, id):
 
     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
     return redirect(prev_url)
+
+def delete_comment(request, id):
+    comments = Comment.objects.get(user = request.user,id = id)
+    # request.user follows user
+    comments.delete()
+    prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
+    return redirect(prev_url)

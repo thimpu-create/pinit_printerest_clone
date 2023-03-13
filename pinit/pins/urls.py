@@ -7,5 +7,5 @@ urlpatterns = [
     path('follow/<str:id>/', views.follow_user, name='follow_user'),
     path('unfollow/<str:id>/', views.unfollow_user, name='unfollow_user'),
     path('comment/<str:id>/', views.add_comment, name='add_comment'),
-
+    path('delete-comments/<str:id>/', views.delete_comment, name='delete_comment'),
 ]
