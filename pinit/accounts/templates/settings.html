@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-2"></div>
+<div class="col-md-8 pt-2 pb-2 row pin-detail-container">
+    
+    <div class="col-md-6 mt-4">
+        <form action="" class="mb-3" method="post">
+        <div class="row">
+            {% csrf_token %}
+        </div>
+        </form>
+        <div class="row">
+            <div class="col-md-1">
+                <a href="">
+                    <img src="{{ user.profile.photo.url }}" class="rounded-circle" width="50" height="50">
+                </a>
+            </div>
+            <div class="col-md-7 ms-1">
+                <a href="" class="text-decoration-none text-dark">
+                    <b class="ms-3">{{user.username}}</b>
+                </a>
+            </div>
+        </div>
+        <form style="display: block;" action="" id="commentsForm" method="post">
+            <!-- <p style="font-size: 12px;" >Share feedback, ask a question or give a high five</p> -->
+            {% csrf_token %}
+            <div class="row mt-3">
+                kjhgfkjfjkhfk
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Edit pin modal -->
+
+
+
+
+
+{% endblock %}

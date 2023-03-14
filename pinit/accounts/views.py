@@ -75,7 +75,11 @@ def user_logout(request):
 def profile(request, username):
     user = get_object_or_404(User, username=username)
     boards = user.board_user.all()
-    created_boards = Board.objects.filter(User = user)
+    if user == request.user:
+       created_boards = Board.objects.filter(User = user)
+    else:
+        print(f'{username} {request.user}')
+        created_boards = Board.objects.filter(User = user, is_private = False)
     pins = Pin.objects.filter(user=request.user).defer('date_created')
     pins_on_board = Pin.objects.filter(board = created_boards[0].id)
     is_following = Follow.objects.filter(user=user)
@@ -141,3 +145,7 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user.profile)
         context = {'title': 'Edit Profile', 'form': form}
     return render(request, 'edit_profile.html', context)
+
+@login_required
+def delete_account(request):
+    return render(request, 'settings.html')

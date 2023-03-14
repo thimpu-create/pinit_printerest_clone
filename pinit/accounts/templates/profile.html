@@ -98,19 +98,20 @@
     </div>
     {% endif %}
     {% if '/saved/' in request.get_full_path %}
-    <div>
-        <div class="masonry">
-            {% for board in created %}
-            <div class="item">
-                <a class="" href="{% url 'boards:board_detail' username=board.User.id board_name=board.title %}">
-                    <img src="{{ board.cover.url }}" alt="">
-                    <label class="board-label">{{ board.title }}</label><br>
-                </a>
-                <p class="board-sub-label "> {{ board.pins.count }} Pins {{ board.date_created|naturaltime }}</p><br>
+            <div>
+                <div class="masonry">
+                    {% for board in created %}
+                    <div class="item">
+                        <a class="" href="{% url 'boards:board_detail' username=board.User.id board_name=board.title %}">
+                            <img src="{{ board.cover.url }}" alt="">
+                            <label class="board-label">{{ board.title }}</label><br>
+                        </a>
+                        <p class="board-sub-label "> {{ board.pins.count }} Pins {{ board.date_created|naturaltime }}</p><br>
+                    </div>
+                    {% endfor %} 
+                </div>
             </div>
-            {% endfor %} 
-        </div>
-    </div>
+                    
     {% endif %}
 </div>
 

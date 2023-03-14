@@ -23,7 +23,10 @@ def create_pin(request):
                 link = forms['link'],
                 description = forms['description']
             )
-            b=Board.objects.filter(User = request.user, title = forms['board']).first()
+            b=Board.objects.filter(User = request.user, title = forms['board'] ).first()
+            b.pins.add(p)
+
+            b=Board.objects.filter(User = request.user, title = 'profile' ).first()
             b.pins.add(p)
             # print(title1)
             # form.save()
