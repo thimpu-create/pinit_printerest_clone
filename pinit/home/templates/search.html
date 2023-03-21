@@ -28,7 +28,7 @@
                     <li class="share-item4">{% copy_to_clipboard object_or_url "Copy to clipboard" %}</li>
                 </ul>
             </div> 
-            <a class=" hover_cards" href="" >
+            <a class=" hover_cards" href="{% url 'pins:pin_detail' pin.id %}" >
                 {% if pin.get_type == 'video' %}
                 <video class = "video_cards" autoplay muted loop>
                     <source src="{{ pin.file.url }}">

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from pins.models import Pin
-from PIL import Image
+# from PIL import Image
 from django.http import FileResponse,HttpResponse
 from boards.models import Board
 
@@ -26,7 +26,9 @@ def save_pin_profile(request,pin_id):
         b.pins.add(p)
         print("done")
         return redirect('home:home')
-
+    
+    
+@login_required
 def search_pins(request):
     search_key = request.POST.get('q')
     if request.method == 'POST':

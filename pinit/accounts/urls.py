@@ -13,4 +13,6 @@ urlpatterns = [
     path('logout/',views.user_logout,name='user_logout'),
     path('settings/delete-account/', views.delete_account_view, name='delete_account_view'),
     path('settings/delete-account/delete/', views.delete_account, name='delete_account'),
+    path('profile/follow/<str:id>',views.follow_user,name='follow_user'),
+    path('profile/unfollow/<str:id>',views.unfollow_user,name='unfollow_user'),
 ]

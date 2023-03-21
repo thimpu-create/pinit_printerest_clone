@@ -78,43 +78,42 @@ def profile(request, username):
     if user == request.user:
        created_boards = Board.objects.filter(User = user)
     else:
-        print(f'{username} {request.user}')
+        # print(f'{username} {request.user}')
         created_boards = Board.objects.filter(User = user, is_private = False)
     pins = Pin.objects.filter(user=request.user).defer('date_created')
     pins_on_board = Pin.objects.filter(board = created_boards[0].id)
     is_following = Follow.objects.filter(user=user)
     is_followed_by = Follow.objects.filter(following=user)
     create_board_form = CreateBoardForm()
+    following = Follow.objects.filter(following=user).exists()
     context = {
         'user': user,
         'boards':boards,
         'pins': pins,
         'is_following': is_following,
         'is_followed_by': is_followed_by,
-        'created' : created_boards
+        'created' : created_boards,
+        'following': following,
         # 'create_board_form':create_board_form
     }
     return render(request, 'profile.html', context)
 
-# @login_required
-# def follow(request, username):
-#     user = get_object_or_404(User, username=username)
-#     check_user = Follow.objects.filter(follower=request.user, following=user)
-#     if user == request.user:
-#         raise Http404
-#     elif check_user.exists():
-#         raise Http404
-#     else:
-#         follow = Follow.objects.create(follower=request.user, following=user)
-#         follow.save()
-#     return redirect(request.META.get('HTTP_REFERER'))
+@login_required
+def follow_user(request,id):
+    user = User.objects.get(id = id)
+    # request.user follows user
+    Follow.objects.create(user = request.user, following = user)
+    prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
+    return redirect(prev_url)
 
 
-# @login_required
-# def unfollow(request, username):
-#     user = get_object_or_404(User, username=username)
-#     following = Follow.objects.filter(following=user).delete()
-#     return redirect(request.META.get('HTTP_REFERER'))
+@login_required
+def unfollow_user(request,id):
+    user = Follow.objects.get(user = request.user,following = id)
+    # request.user follows user
+    user.delete()
+    prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
+    return redirect(prev_url)
 
 
 # @login_required

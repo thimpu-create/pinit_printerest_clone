@@ -283,6 +283,8 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
     inset: 0px auto auto 0px;
     margin: 0px;
     transform: translate3d(-204px, -100.5px, 0px) !important;
+	min-height: 19em;
+	max-height: 40em;
 }
 
 .following-list-right{
@@ -290,4 +292,16 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
     inset: 0px auto auto 0px;
     margin: 0px;
     transform: translate3d(910px, 343.5px, 0px) !important;
+}
+
+.editFormModal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.658);
 }
