@@ -4,10 +4,9 @@ console.log("connected")
 const createBoardBtn = document.querySelector("#createBoardBtn");
 const modal = document.querySelector("#simpleModal");
 const edit_pin = document.getElementById("editPinBtn")
+const cancle_pin = document.getElementById("cancle-btn");
 const editFormModal = document.getElementById("editPinForm") // selecting the modal
 
-console.log("editFormModal",editFormModal)
-console.log("edit_pin",edit_pin)
 
 // edit_pin.
 
@@ -19,6 +18,11 @@ edit_pin.addEventListener("click", (e) => {
   editFormModal.style.display = "block";
 });
 
+//cancle edit
+cancle_pin.addEventListener("click", (e) => {
+  e.preventDefault();
+  editFormModal.style.display = "none";
+});
 
 
 // createBoardBtn.addEventListener("click", (e) => {

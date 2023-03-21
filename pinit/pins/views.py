@@ -85,6 +85,7 @@ def add_comment(request, id):
     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
     return redirect(prev_url)
 
+@login_required
 def delete_comment(request, id):
     comments = Comment.objects.get(user = request.user,id = id)
     # request.user follows user
@@ -105,3 +106,10 @@ def edit_pin(request, id):
             instance.save()
             board.pins.add(instance)
     return redirect(request.META.get('HTTP_REFERER'))
+
+@login_required
+def delete_pin(request, id):
+    if request.method == "POST":
+        pin = get_object_or_404(Pin, id=id)
+        pin.delete()
+    return redirect('home:home')
