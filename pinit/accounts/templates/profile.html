@@ -6,7 +6,7 @@
     {% if request.user == user %}
     <!-- plus icon | create board and pin dropdown menu -->
     <div class="dropdown sticky">
-        <a style="float: right; margin-top: 430px;" href="#"class="d-block link-dark text-decoration-none sticky-btn" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <a style="float: right; margin-top: 430px;" href="#" class="d-block link-dark text-decoration-none sticky-btn" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj U9O kVc" height="20" width="20" viewBox="0 0 24 24" aria-hidden="true" aria-label="" role="img">
                 <path d="M22 10h-8V2a2 2 0 0 0-4 0v8H2a2 2 0 0 0 0 4h8v8a2 2 0 0 0 4 0v-8h8a2 2 0 0 0 0-4" fill="#111111" stroke-width="0px"></path>
             </svg>
@@ -26,10 +26,42 @@
     <!-- username and pronouns -->
     <p class="text-muted">@{{ user.username }} . {{ user.profile.pronouns }}</p>
     <!-- website link and about -->
-    <p><b><a class="text-black text-decoration-none" href="http://{{user.profile.website}}">{{ user.profile.website }}</a></b> . {{ user.profile.about }}</p>
+    <p><b><a class="text-black text-decoration-none" href="http://{{user.profile.website}}">{{ user.profile.website }}</a></b> <br> {{ user.profile.about }}</p>
     <!-- following and followers count -->
-    <span><b>{{ is_followed_by.count }} followers</b></span> .
-    <span><b>{{ is_following.count }} following</b></span>
+    
+    <div class="follow-container d-flex flex-row justify-content-center">
+
+        <div class="dropdown sticky">
+            <a class="check-follow-btn " id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"
+             href="#">{{ is_followed_by.count }} followers</a>
+
+            <ul class="dropdown-menu follow-list-left" aria-labelledby="dropdownUser1">
+                {% for followers in is_followed_by %}
+                <li><a id="" class="dropdown-item" href="{% url 'accounts:profile' followers.user %}">
+                    <img src="{{ followers.user.profile.photo.url }}" class="rounded-circle" width="50" height="50">
+                    {{ followers.user }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="ms-2">
+            <a class="check-follow-btn" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"
+             href="#">{{ is_following.count }} following</a>
+
+            <ul class="dropdown-menu following-list-right" aria-labelledby="dropdownUser1">
+                {% for followers in is_following %}
+                <li><a id="" class="dropdown-item" href="{% url 'accounts:profile' followers.following %}">
+                        <img src="{{ followers.following.profile.photo.url }}" class="rounded-circle" width="50" height="50">    
+                        {{ followers.following }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+
+
     {% if request.user == user %}
     <!-- edit profile and share btn -->
     <div class="mt-3">

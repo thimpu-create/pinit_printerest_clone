@@ -23,6 +23,7 @@ class CreatePinForm(forms.ModelForm):
 
 
 class SaveToBoard(forms.ModelForm):
+    title = forms.CharField(initial='profile')
     class Meta:
         model = Pin
         fields = ['board']
@@ -30,9 +31,11 @@ class SaveToBoard(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(SaveToBoard, self).__init__(*args, **kwargs)
         self.fields['board'].queryset = Board.objects.filter(User=user)
+        # self.fields['title'].initial = 'profile'
         for visible in self.visible_fields():
             if visible.name == 'board':
                 visible.field.widget.attrs['class'] = 'board-input border form-control'
+
 
 
 

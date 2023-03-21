@@ -2,34 +2,33 @@
 {% load social_share %}
 {% block content %}
     {% for pin in pins %}
-        <div class="item">
-            
-            <a class=" hover_cards" href="" >
-    <form method="POST" action="{% url 'home:save-pin' pin.id %}">
-        {% csrf_token %}
+    <div class="item">      
+        <form method="POST" action="{% url 'home:save-pin' pin.id %}">
+            {% csrf_token %}
                 <button class="btn btn-danger save-pin-btn" type="submit">Save</button>
-    </form>
-                <div class="dropdown-center btn btn-light">
-                    <a href="#" class="d-block text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj" height="20" width="20" viewBox="0 0 24 24" aria-label="More options" role="img">
-                            <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" fill="#111111" stroke-width="0px"></path>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-center text-small" aria-labelledby="dropdownUser1">
-                        <li><a id="editPinBtn" class="dropdown-item" href="{% url 'home:download' pin.file.path %}">Download Pin</a></li>
-                    </ul>
-                </div>        
-                <div class="dropdown-share btn btn-light">
-                    <a href="#" class="share-btn" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Share
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-center text-small" aria-labelledby="dropdownUser1">
-                        <li class="share-item">{% post_to_facebook object_or_url "Facebook" %}</li>
-                        <li class="share-item">{% post_to_twitter object_or_url "Twitter" %}</li>
-                        <li class="share-item">{% post_to_whatsapp object_or_url "Whatsapp" %}</li>
-                        <li class="share-item4">{% copy_to_clipboard object_or_url "Copy to clipboard" %}</li>
-                    </ul>
-                </div> 
+        </form>
+        <div class="dropdown-center btn btn-light">
+            <a href="#" class="d-block text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj" height="20" width="20" viewBox="0 0 24 24" aria-label="More options" role="img">
+                    <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" fill="#111111" stroke-width="0px"></path>
+                </svg>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-center text-small" aria-labelledby="dropdownUser1">
+                <li><a id="editPinBtn" class="dropdown-item" href="{% url 'home:download' pin.file.path %}">Download Pin</a></li>
+            </ul>
+        </div>        
+            <div class="dropdown-share btn btn-light">
+                <a href="#" class="share-btn" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Share
+                </a>
+                <ul class="dropdown-menu dropdown-menu-center text-small" aria-labelledby="dropdownUser1">
+                    <li class="share-item">{% post_to_facebook object_or_url "Facebook" %}</li>
+                    <li class="share-item">{% post_to_twitter object_or_url "Twitter" %}</li>
+                    <li class="share-item">{% post_to_whatsapp object_or_url "Whatsapp" %}</li>
+                    <li class="share-item4">{% copy_to_clipboard object_or_url "Copy to clipboard" %}</li>
+                </ul>
+            </div> 
+            <a class=" hover_cards" href="" >
                 {% if pin.get_type == 'video' %}
                 <video class = "video_cards" autoplay muted loop>
                     <source src="{{ pin.file.url }}">

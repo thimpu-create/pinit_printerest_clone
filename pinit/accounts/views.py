@@ -148,4 +148,16 @@ def edit_profile(request):
 
 @login_required
 def delete_account(request):
+    if request.method == 'POST':
+        ans = request.POST.get('answer')
+        print(type(ans))
+        if ans == 'True':
+            delete_acc = User.objects.get(username = request.user)
+            delete_acc.delete()
+            return redirect('accounts:user_login')
+    return redirect('home:home')
+
+@login_required
+def delete_account_view(request):
     return render(request, 'settings.html')
+

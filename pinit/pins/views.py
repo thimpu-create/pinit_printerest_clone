@@ -41,7 +41,7 @@ def pin_detail(request,id):
     pin = Pin.objects.filter(id=id).first()
     saved_pin = request.user.pin_user.filter(id=id).first()
     is_following = request.user.user.filter(following=pin.user).first()
-    save_to_board_form = SaveToBoard(request.user, instance=saved_pin)
+    save_to_board_form = SaveToBoard(request.user, instance=saved_pin, initial={'title': 'profile'})
     # edit_form = EditPinForm(request.user, instance=pin)
     comment_form = CommentForm()
     context = {
