@@ -10,7 +10,7 @@ from boards.models import Board
 @login_required
 def download(request, filename):
     # filename = "D:\project\pinit\media\pins\lab2_1.jpg"
-    print(filename)
+    # print(filename)
     with open(filename, 'rb') as f:
         response = HttpResponse(f.read(), content_type='image/png')
         response['Content-Disposition'] = 'attachment; filename=' + filename
@@ -27,7 +27,7 @@ def save_pin_profile(request,pin_id):
         print("done")
         return redirect('home:home')
     
-    
+
 @login_required
 def search_pins(request):
     search_key = request.POST.get('q')

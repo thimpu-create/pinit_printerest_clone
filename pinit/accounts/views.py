@@ -85,7 +85,8 @@ def profile(request, username):
     is_following = Follow.objects.filter(user=user)
     is_followed_by = Follow.objects.filter(following=user)
     create_board_form = CreateBoardForm()
-    following = Follow.objects.filter(following=user).exists()
+    following = Follow.objects.filter(user=request.user,following=user).exists()
+    print(following)
     context = {
         'user': user,
         'boards':boards,

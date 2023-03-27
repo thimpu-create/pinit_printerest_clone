@@ -285,13 +285,16 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
     transform: translate3d(-204px, -100.5px, 0px) !important;
 	min-height: 19em;
 	max-height: 40em;
+	float: left;
 }
 
 .following-list-right{
 	position: absolute;
     inset: 0px auto auto 0px;
     margin: 0px;
-    transform: translate3d(910px, 343.5px, 0px) !important;
+    transform:translate3d(850px, 300.5px, 0px) !important;
+	min-height: 19em;
+	max-height: 40em;
 }
 
 .editFormModal{
