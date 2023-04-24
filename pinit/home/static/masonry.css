@@ -245,7 +245,7 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	right: 4em;
 	bottom: 1em;
 	z-index: 1;
-	display: none;
+	display: block;
 }
 
 .item:hover img{
@@ -287,12 +287,12 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 .item .dropdown-center{
 	position: absolute;
 	right: 1em;
-	bottom: 1em;
+	bottom: 4em;
 	z-index: 1;
 	display:none;
 	background-color: #ffffff;
-	width: 2.5em;
-	height: 2.5em;
+	width: 2.3em;
+	height: 2.3em;
 }
 
 .item:hover .dropdown-center{
@@ -302,8 +302,8 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 
 .item svg{
 	position: absolute;
-	right: 0.6em;
-	bottom: 0.6em;
+    right: 0.5em;
+    bottom: 0.5em;
 }
 
 
@@ -369,20 +369,20 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 .item .dropdown-share{
 	position: absolute;
 	right: 4em;
-	bottom: 1em;
+	bottom: 4em;
 	z-index: 1;
 	display:none;
 	background-color: #ffffff;
-	width: 4em;
-	height: 2.5em;
+	width: 3.8em;
+	height: 2.3em;
 	border-radius: 2em;
 }
 
 .share-btn{
-	right: 0.8em;
-	bottom: 0.53em;
-	color: #0e0e0e;
-	text-decoration: none;
+	right: 0.6em;
+    bottom: 0.5em;
+    color: #0e0e0e;
+    text-decoration: none;
 }
 
 .item:hover .dropdown-share{
@@ -431,4 +431,24 @@ ul .share-item{
     font-size: 15px;
     color: #848484;
     /* font-family: inherit; */
+}
+
+.pin-title-user{
+	text-decoration: none;
+	padding: 0;
+	padding-left: 0.5em;
+}
+#pin-user{
+	text-decoration: none;
+	margin-top: 0px;
+	color: #111;
+}
+#pin-user img{
+	height: 2em;
+	width: 2em;
+	border-radius: 50%;
+}
+#pin-title{
+	margin: 0px;
+	font-weight: 500;
 }

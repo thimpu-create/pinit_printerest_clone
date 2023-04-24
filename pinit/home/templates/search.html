@@ -37,6 +37,13 @@
                 <img src="{{ pin.file.url }}">
                 {% endif %}
             </a>
+            <div class = "pin-title-user">
+                <p id = "pin-title">{{ pin.title }}</p>
+                <a id = "pin-user" href="#">
+                    <img src="{{ pin.user.profile.photo.url }}"/> 
+                    {{ pin.user.profile.fname }} {{ pin.user.profile.lname }}
+                </a>
+            </div> 
         </div>
     {% endfor %} 
 
