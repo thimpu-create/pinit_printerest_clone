@@ -24,8 +24,7 @@ class Pin(models.Model):
             return 'video'
         elif 'image' in file_type:
             return 'image'
-
-
+        
 
 class Comment(models.Model):
     pins = models.ForeignKey(Pin, on_delete=models.CASCADE, related_name= 'comments')

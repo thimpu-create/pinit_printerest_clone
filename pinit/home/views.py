@@ -5,6 +5,7 @@ from pins.models import Pin
 # from PIL import Image
 from django.http import FileResponse,HttpResponse
 from boards.models import Board
+from django.core.paginator import Paginator
 
 
 @login_required
@@ -42,6 +43,7 @@ def search_pins(request):
 @login_required
 def home(request):
     pins = Pin.objects.order_by('-date_created')
+    paginator = Paginator(pins,10)
     context = {'pins' : pins ,
                }
     return render(request,'home.html',context)
