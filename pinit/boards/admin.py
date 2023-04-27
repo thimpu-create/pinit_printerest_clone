@@ -4,6 +4,6 @@ from django.contrib import admin
 from . models import Board
 
 class BoardMember(admin.ModelAdmin):
-    list_display = ('User','title','cover','is_private','description','date_created')
+    list_display = ('id','User','title','cover','is_private','description','date_created')
 
 admin.site.register(Board,BoardMember)

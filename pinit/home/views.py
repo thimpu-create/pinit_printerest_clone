@@ -10,8 +10,6 @@ from django.core.paginator import Paginator
 
 @login_required
 def download(request, filename):
-    # filename = "D:\project\pinit\media\pins\lab2_1.jpg"
-    # print(filename)
     with open(filename, 'rb') as f:
         response = HttpResponse(f.read(), content_type='image/png')
         response['Content-Disposition'] = 'attachment; filename=' + filename
@@ -42,8 +40,9 @@ def search_pins(request):
 
 @login_required
 def home(request):
-    pins = Pin.objects.order_by('-date_created')
-    paginator = Paginator(pins,10)
-    context = {'pins' : pins ,
+    pins_list = Pin.objects.order_by('-date_created')
+    # paginator = Paginator(pins_list,20)
+    # pins = paginator.get_page(1)
+    context = {'pins' : pins_list ,
                }
     return render(request,'home.html',context)

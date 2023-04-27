@@ -18,7 +18,7 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center">
         
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
-          <li><a style='border-radius: 50px; font-size: 15px;' href="{% url 'home:home' %}" class="ms-3 nav-link px-2 text-white bg-black"><b>Home</b></a></li>
+          <li><a id="paginate" style='border-radius: 50px; font-size: 15px;' href="{% url 'home:home' %}" class="ms-3 nav-link px-2 text-white bg-black"><b>Home</b></a></li>
           <li><a href="#" class="ms-1 nav-link px-2 link-dark"><b>Today</b></a></li>
         </ul>
         <form method = "POST" action="{% url 'home:search-pins' %}" class="col-12 w-75 col-lg-auto mb-3 mb-lg-0 me-lg-3">

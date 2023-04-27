@@ -1,8 +1,37 @@
 {% extends "masonry.html" %}
 {% load social_share %}
 {% block content %}
+<script>
+    let pageId = 1;
+    window.addEventListener("wheel", function (event) {
+            if (event.deltaY < 0) {
+                console.log("scrolling up");
+                document.getElementById("status").textContent =
+                    "scrolling up";
+            } else if (event.deltaY > 0) {
+                console.log("scrolling down");
+                document.getElementById("status").textContent =
+                    "scrolling down";
+            }
 
+            var scrolled = (window.pageYOffset / window.innerHeight) * 100;
+            console.log("scrolled:", scrolled + "%");
+            let atag = document.getElementById('paginate')
+            if (pageId > 1) {
+                atag.href = atag.href.slice(0, 27);
+            }
+            atag.href = atag.href + pageId.toString();
+            console.log(atag.href)
+            pageId++;
 
+            document.getElementById("offset").textContent =
+                "scrolled: " + scrolled.toFixed(2) + "%";
+              });
+</script>
+<div class="fixed">
+    <div id="status"></div>
+    <div id="offset"></div>
+</div>
     {% for pin in pins %}
         <div class="item">
             
