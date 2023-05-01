@@ -1,8 +1,10 @@
 from django.db import models
 from mimetypes import guess_type
-
+from django.utils.html import escape
 from django.contrib.auth.models import User
 from boards.models import Board
+from django.shortcuts import render,redirect,get_object_or_404
+
 
 class Pin(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE, related_name='pin_user')

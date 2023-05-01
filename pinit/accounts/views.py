@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import Http404,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.contrib import messages
 
 import json
 
@@ -38,6 +39,7 @@ def user_register(request):
                 )
                 Board.objects.create(User=user,title="profile")
                 # return HttpResponse('Succesful')
+                messages.success(request,'Registration Successfull! You can log in')
                 return redirect('accounts:user_login')
             else:
                 return HttpResponse('ALready exist')
@@ -48,6 +50,8 @@ def user_register(request):
 
 
 def user_login(request):
+    form = UserLoginForm()
+    context = {'title':'Login', 'form': form}
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -59,11 +63,8 @@ def user_login(request):
                 login(request, user)
                 return redirect('home:home')
             else:
-                return redirect(request.META.get('HTTP_REFERER'))
-    else:
-        form = UserLoginForm()
-        context = {'title':'Login', 'form': form}
-        return render(request, 'login.html', context)
+                messages.warning(request,'Username or password incorrect!')
+    return render(request, 'login.html', context)
 
 
 def user_logout(request):

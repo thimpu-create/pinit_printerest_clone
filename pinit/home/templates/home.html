@@ -1,45 +1,15 @@
 {% extends "masonry.html" %}
 {% load social_share %}
 {% block content %}
-<script>
-    let pageId = 1;
-    window.addEventListener("wheel", function (event) {
-            if (event.deltaY < 0) {
-                console.log("scrolling up");
-                document.getElementById("status").textContent =
-                    "scrolling up";
-            } else if (event.deltaY > 0) {
-                console.log("scrolling down");
-                document.getElementById("status").textContent =
-                    "scrolling down";
-            }
-
-            var scrolled = (window.pageYOffset / window.innerHeight) * 100;
-            console.log("scrolled:", scrolled + "%");
-            let atag = document.getElementById('paginate')
-            if (pageId > 1) {
-                atag.href = atag.href.slice(0, 27);
-            }
-            atag.href = atag.href + pageId.toString();
-            console.log(atag.href)
-            pageId++;
-
-            document.getElementById("offset").textContent =
-                "scrolled: " + scrolled.toFixed(2) + "%";
-              });
-</script>
-<div class="fixed">
-    <div id="status"></div>
-    <div id="offset"></div>
-</div>
-    {% for pin in pins %}
+    
+{% for pin in pins %}
         <div class="item">
             
             <form method="POST" action="{% url 'home:save-pin' pin.id %}">
                 {% csrf_token %}
-                    <button class="btn btn-danger save-pin-btn" type="submit">Save</button>
+                    <button class="btn btn-danger save-pin-btn rounded-pill" type="submit">Save</button>
             </form>
-            <div class="dropdown-center btn btn-light">
+            <div class="dropdown-center btn btn-light rounded-pill">
                 <a href="#" class="d-block text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj" height="20" width="20" viewBox="0 0 24 24" aria-label="More options" role="img">
                         <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" fill="#111111" stroke-width="0px"></path>
