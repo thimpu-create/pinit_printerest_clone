@@ -32,6 +32,7 @@ class Comment(models.Model):
     pins = models.ForeignKey(Pin, on_delete=models.CASCADE, related_name= 'comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='all_comments')
     text = models.CharField(max_length=255)
+    has_viewed_status = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

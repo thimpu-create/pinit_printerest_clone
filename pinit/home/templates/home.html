@@ -48,6 +48,45 @@
                 </a>
             </div> 
         </div>
+    
     {% endfor %} 
 
+    <!------offcanvas---->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">update</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group comments">
+                {% for comment in comments %}
+                    <!-- <div>
+                        
+                        <a href="#"></a>
+                        
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                            <small class="text-muted">{{comment.date_created}}</small>
+                            </div>
+                            <p class="mb-1">{{comment.user}} comment on {{comment.pins}}</p>
+                        </a>
+
+
+                    </div> -->
+                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <div class="flex-column w-50">
+                            <b>{{ comment.user }}</b> commented on your pin
+                        </div>
+                        <div class="image-comment">
+                            <img src="{{ comment.pins.file.url }}" class="img-fluid" height="50px" width="50px" style="border-radius: 10%;">
+                        </div>
+                      </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+      
+
 {% endblock %}
+
+

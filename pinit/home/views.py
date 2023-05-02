@@ -5,7 +5,9 @@ from pins.models import Pin
 # from PIL import Image
 from django.http import FileResponse,HttpResponse,JsonResponse
 from boards.models import Board
+from pins.models import Comment
 from django.core.paginator import Paginator
+from django.db.models import Prefetch
 
 
 @login_required
@@ -41,6 +43,12 @@ def search_pins(request):
 @login_required
 def home(request):
     pins = Pin.objects.order_by('-date_created')
+    comments = Comment.objects.filter(
+            pins__user_id=request.user
+        ).exclude(user_id=request.user).prefetch_related(
+                                Prefetch('pins', queryset=Pin.objects.filter(user_id=request.user))
+                                )
     context = {'pins' : pins ,
+               'comments' : comments,
                }
     return render(request,'home.html',context)

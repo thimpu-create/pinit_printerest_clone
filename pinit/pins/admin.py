@@ -7,7 +7,7 @@ class PinMember(admin.ModelAdmin):
     list_display = ('user','board','file','title','link','description','date_created')
 
 class CommentMember(admin.ModelAdmin):
-    list_display = ('pins','user','text','date_created')
+    list_display = ('pins','user','text','date_created','has_viewed_status')
 
 admin.site.register(Pin,PinMember)
 admin.site.register(Comment,CommentMember)
