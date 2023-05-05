@@ -46,6 +46,8 @@
 	border-radius: 15px;
 	cursor: zoom-in;
 	margin: 0;
+	/* object-fit: cover;
+	object-position: 0 100%; */
 	/* border: 2px solid red; */
 
 }
@@ -187,7 +189,12 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	height: fit-content;
 	width: 400px;
 	border-radius: 20px;
-	margin-left: -15px;
+	margin-left: -10px;
+}
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    margin: auto;
 }
 
 .edit-pin-modal {

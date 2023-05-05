@@ -1,12 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.http import HttpResponse
 from . forms import CreatePinForm,SaveToBoard,CommentForm,EditPinForm
-# Create your views here.
 from .models import Pin,Board,Comment
-from accounts.models import Follow
-from django.contrib.auth.models import User
-
-
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -25,9 +19,14 @@ def create_pin(request):
             )
             b=Board.objects.filter(User = request.user, title = forms['board'] ).first()
             b.pins.add(p)
+            b.cover = forms['file']
+            b.save()
 
             b=Board.objects.filter(User = request.user, title = 'profile' ).first()
             b.pins.add(p)
+            b.cover = forms['file']
+            b.save()
+
             return redirect( 'accounts:profile_saved',request.user.username)
     form = CreatePinForm(request.user)
     return render(request,"create_pin.html",{'form':form})
@@ -47,27 +46,8 @@ def pin_detail(request,id):
         'is_following': is_following,
         'edit_form': edit_form,
         'comment_form': comment_form,
-        # 'related_pins': get_related_pins(id)
     }
     return render(request, 'pin_detail.html', context)
-
-
-# @login_required
-# def follow_user(request,id):
-#     user = User.objects.get(id = id)
-#     # request.user follows user
-#     Follow.objects.create(user = request.user, following = user)
-#     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
-#     return redirect(prev_url)
-
-
-# @login_required
-# def unfollow_user(request,id):
-#     user = Follow.objects.get(user = request.user,following = id)
-#     # request.user follows user
-#     user.delete()
-#     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
-#     return redirect(prev_url)
 
 @login_required
 def add_comment(request, id):
@@ -88,7 +68,6 @@ def add_comment(request, id):
 @login_required
 def delete_comment(request, id):
     comments = Comment.objects.get(user = request.user,id = id)
-    # request.user follows user
     comments.delete()
     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
     return redirect(prev_url)

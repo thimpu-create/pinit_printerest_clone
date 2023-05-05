@@ -16,7 +16,6 @@
             <p class="mb-4" >People visiting your profile will see the following info</p>
             <div class="row mt-1">
                 <div class="col-md-1 me-4">
-                    <label for="">Photo</label>
                     <img 
                         style="object-fit: cover;" 
                         width="80"
@@ -60,13 +59,11 @@
 
     
 </div>
-<!-- <div id="myModal" class="modal" style="display: block;"> -->
 
     <div class="modal fade delete-account-modal" id="DeleteModal" tabindex="1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form style="display: block;" action="{% url 'accounts:delete_account'  %}" id="commentsForm" method="post">
-                    <!-- <p style="font-size: 12px;" >Share feedback, ask a question or give a high five</p> -->
                     {% csrf_token %}
                     <div class="modal-header" style="border: none;">
                     <h5 class="modal-title" id="exampleModalLabel">delete account?</h5>

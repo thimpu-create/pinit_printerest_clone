@@ -1,25 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- <div class="content-section">
-    <form action="{% url 'boards:create_board' %}" class="boardform" method="POST">
-        {% csrf_token %}
-        <div class="boardtitle">
-            {{ form.title }}
-        </div>
-        <div class="boardvisible">
-            {{ form.is_private }}
-            <label class="form-check-label">Keep this board secret</label><br>
-            <small class="text-muted">
-                So only you and collaborators can see it
-            </small>
-        </div>
-        <div>
-            <input class="btn btn-lg btn-block btn-success"type="submit" value="Login">
-        </div>
-    </form>
-</div>
- -->
- <!-- <div id="simpleModal" class="modal"> -->
 <div id="" class=""></div>
     <div class="modal-content ps-5 pb-5 pe-5">
         <h3 class="mt-4 mb-3"><b>Create Board</b></h3>
@@ -28,10 +8,8 @@
                 {% csrf_token %}
                 <label style="float: left;" for="">Name</label>
                 {{ forms.title }}
-                <!-- <input class="form-control board rounded-pill p-2 mt-1" type="text" placeholder="Like places of food" name="title"> -->                      
                 <div class="col-md-1 mt-4">    
                     {{ forms.is_private }}                        
-                    <!-- <input class="form-check-input mt-1 private-checkbox" type="checkbox" name="is_private"> -->
                 </div>
                 <div style="text-align:left" class="col-md-11">
                     <b class="ms-1">Keep this board secret</b>
@@ -43,6 +21,3 @@
     </div>
 </div>
 {% endblock content %} 
-<!-- 
-{{ create_board_form.title }}  
-{{ create_board_form.is_private }} -->

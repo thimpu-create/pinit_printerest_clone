@@ -1,12 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-# Create your views here.
 from pins.models import Pin
-# from PIL import Image
-from django.http import FileResponse,HttpResponse,JsonResponse
+from django.http import HttpResponse
 from boards.models import Board
 from pins.models import Comment
-from django.core.paginator import Paginator
 from django.db.models import Prefetch
 
 

@@ -60,20 +60,7 @@
         <div class="offcanvas-body">
             <ul class="list-group comments">
                 {% for comment in comments %}
-                    <!-- <div>
-                        
-                        <a href="#"></a>
-                        
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <small class="text-muted">{{comment.date_created}}</small>
-                            </div>
-                            <p class="mb-1">{{comment.user}} comment on {{comment.pins}}</p>
-                        </a>
-
-
-                    </div> -->
-                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <a href="{% url 'pins:pin_detail' comment.pins.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         <div class="flex-column w-50">
                             <b>{{ comment.user }}</b> commented on your pin
                         </div>

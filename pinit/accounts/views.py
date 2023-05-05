@@ -1,15 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
-from django.http import Http404,HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
-
-import json
-
 from django.contrib import messages
 
-from boards.forms import CreateBoardForm
 from .forms import UserRegistrationForm, UserLoginForm, EditProfileForm
 from django.contrib.auth.models import User
 from . models import Follow,Profile
@@ -24,7 +20,6 @@ def user_register(request):
             data = form.cleaned_data
             check_user = User.objects.filter(
                 Q(username=data['username']) | Q(email=data['email'])
-                # username = data['username']
             )
             if not check_user:
                 User.objects.create_user(
@@ -38,7 +33,6 @@ def user_register(request):
                     lname = data['lname']
                 )
                 Board.objects.create(User=user,title="profile")
-                # return HttpResponse('Succesful')
                 messages.success(request,'Registration Successfull! You can log in')
                 return redirect('accounts:user_login')
             else:
@@ -79,15 +73,11 @@ def profile(request, username):
     if user == request.user:
        created_boards = Board.objects.filter(User = user)
     else:
-        # print(f'{username} {request.user}')
         created_boards = Board.objects.filter(User = user, is_private = False)
-    pins = Pin.objects.filter(user=request.user).defer('date_created')
-    pins_on_board = Pin.objects.filter(board = created_boards[0].id)
+    pins = Pin.objects.filter(user=user.id)
     is_following = Follow.objects.filter(user=user)
     is_followed_by = Follow.objects.filter(following=user)
-    create_board_form = CreateBoardForm()
     following = Follow.objects.filter(user=request.user,following=user).exists()
-    print(following)
     context = {
         'user': user,
         'boards':boards,
@@ -96,14 +86,12 @@ def profile(request, username):
         'is_followed_by': is_followed_by,
         'created' : created_boards,
         'following': following,
-        # 'create_board_form':create_board_form
     }
     return render(request, 'profile.html', context)
 
 @login_required
 def follow_user(request,id):
     user = User.objects.get(id = id)
-    # request.user follows user
     Follow.objects.create(user = request.user, following = user)
     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
     return redirect(prev_url)
@@ -112,26 +100,9 @@ def follow_user(request,id):
 @login_required
 def unfollow_user(request,id):
     user = Follow.objects.get(user = request.user,following = id)
-    # request.user follows user
     user.delete()
     prev_url = request.META.get('HTTP_REFERER')#Very verry important!!!!
     return redirect(prev_url)
-
-
-# @login_required
-# def profile(request, username):
-#     user = get_object_or_404(User, username=username)
-#     boards = user.board_user.all()
-#     is_following = request.user.followers.filter(following=user).first()
-#     create_board_form = CreateBoardForm()
-#     context = {
-#         'user': user,
-#         'boards':boards,
-#         'is_following': is_following,
-#         'create_board_form':create_board_form
-#     }
-#     return render(request, 'profile.html', context)
-
 
 @login_required
 def edit_profile(request):
