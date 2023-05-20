@@ -88,7 +88,13 @@
         </div>
         {% else %}
         <div class="mt-3">
-            <a href="#" class="main-btn btn ps-3 pt-2 pb-2 pe-3 text-black ms-4"><b>Message</b></a>
+            <a href="#" class="main-btn btn ps-3 pt-2 pb-2 pe-3 text-black ms-1" data-bs-toggle="dropdown" aria-expanded="false"><b>Share</b></a>
+            <ul class="dropdown-menu dropdown-menu-center text-small" aria-labelledby="dropdownUser1">
+                <li class="share-item">{% post_to_facebook object_or_url "Facebook" %}</li>
+                <li class="share-item">{% post_to_twitter object_or_url "Twitter" %}</li>
+                <li class="share-item">{% post_to_whatsapp object_or_url "Whatsapp" %}</li>
+                <li class="share-item4">{% copy_to_clipboard object_or_url "Copy to clipboard" %}</li>
+            </ul>
             
             <a href="{% url 'accounts:follow_user' user.id %}" class="follow-btn">
                 <b>Follow</b>

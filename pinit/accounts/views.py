@@ -55,6 +55,7 @@ def user_login(request):
             )
             if user is not None:
                 login(request, user)
+                messages.success(request,user)
                 return redirect('home:home')
             else:
                 messages.warning(request,'Username or password incorrect!')

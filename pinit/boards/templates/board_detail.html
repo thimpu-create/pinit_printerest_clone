@@ -20,7 +20,7 @@
 <div class="row mt-5">
     {% for pin in pins %}
     <div class="img-container col-md-2 mb-3">
-        <a href="#">
+        <a href="{% url 'pins:pin_detail' pin.id %}">
             {% if pin.get_type == 'video' %}
                 <video autoplay muted loop class="video" >
                     <source src="{{ pin.file.url }}" >
@@ -31,9 +31,9 @@
         </a>
         <div class="dropdown ms-3">
             <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj" height="20" width="20" viewBox="0 0 24 24" aria-label="More options" role="img">
+                <!-- <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="gUZ pBj" height="20" width="20" viewBox="0 0 24 24" aria-label="More options" role="img">
                     <path d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z" fill="#111111" stroke-width="0px"></path>
-                </svg>
+                </svg> -->
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                 <li><a id="editPinBtn" class="dropdown-item" href="#">Remove From Board</a></li>
