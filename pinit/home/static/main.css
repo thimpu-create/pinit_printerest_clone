@@ -331,3 +331,13 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	border: none !important;
 }
 
+.lock-btn{
+	position: absolute;
+	top: 1rem;
+	background: rgb(204, 202, 202);
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	padding: 5px;
+}
+
