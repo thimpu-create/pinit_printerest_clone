@@ -4,6 +4,18 @@
 <div class="col-md-2"></div>
 <div class="col-md-8 pt-2 pb-2 row pin-detail-container">
     <div class="col-md-6">
+        
+        <form method="POST" action="{% url 'pins:like' pin.id %}">
+            {% csrf_token %}
+            {% if liked == True %}
+                <button type="submit" class="like-btn">
+                    <span id="boot-icon" class="bi bi-heart-fill" style="color: rgb(255, 0, 0);"></span>
+                </button>
+            {% elif liked == False %}
+                <button type="submit" class="like-btn"><span class="bi bi-heart"></span></button>
+            {% endif %}
+        </form>
+        <span class="show-likes">{{ like }} likes </span>
         {% if pin.get_type == 'video' %}
         <video autoplay muted controls class="pin-detail-img">
             <source src="{{ pin.file.url }}">
@@ -13,8 +25,9 @@
         {% endif %}
     </div>
     <div class="col-md-6 mt-4">
-        <form action="" class="mb-3" method="post">
+        <form action="{% url 'pins:save_to_board' pin.id %}" class="mb-3" method="post">
         <div class="row">
+            
             {% csrf_token %}
             <div class="dropdown col-md-6 mt-2">
                 <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

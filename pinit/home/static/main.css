@@ -304,7 +304,7 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 .editFormModal{
 	display: none;
 	position: fixed;
-	z-index: 1;
+	z-index: 2;
 	left: 0;
 	top: 0;
 	height: 100%;
@@ -339,5 +339,26 @@ header, .first-header {box-shadow: rgba(89, 89, 92, 0.041) 0px 7px 5px 0px;}
 	height: 30px;
 	width: 30px;
 	padding: 5px;
+}
+
+.like-btn{
+	position: absolute;
+	margin-top: 20px;
+	z-index: 2;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	/* background-color: transparent; */
+	background-color:#e4e2e2;
+	border: none;
+	padding: 0;
+}
+.show-likes{
+	position: absolute;
+	z-index: 1;
+	margin-top: 28px;
+	margin-left: 50px;
+	color: #ffffff;
+	font-weight:500;
 }
 

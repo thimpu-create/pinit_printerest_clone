@@ -8,4 +8,6 @@ urlpatterns = [
     path('delete/<int:id>', views.delete_pin, name='delete_pin'),
     path('comment/<str:id>/', views.add_comment, name='add_comment'),
     path('delete-comments/<str:id>/', views.delete_comment, name='delete_comment'),
+    path('like/<int:id>',views.like, name='like'),
+    path('save_to_board/<int:pin_id>',views.save_to_board,name='save_to_board'),
 ]

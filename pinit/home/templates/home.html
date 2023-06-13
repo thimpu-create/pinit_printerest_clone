@@ -5,9 +5,11 @@
 {% for pin in pins %}
         <div class="item">
             
+            
             <form method="POST" action="{% url 'home:save-pin' pin.id %}">
                 {% csrf_token %}
                     <button class="btn btn-danger save-pin-btn rounded-pill" type="submit">Save</button>
+                    
             </form>
             <div class="dropdown-center btn btn-light rounded-pill">
                 <a href="#" class="d-block text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,6 +33,7 @@
                 </ul>
             </div> 
             <a class=" hover_cards" href="{% url 'pins:pin_detail' pin.id %}" >
+                
                 {% if pin.get_type == 'video' %}
                 <video class = "video_cards" autoplay muted loop>
                     <source src="{{ pin.file.url }}">
@@ -41,6 +44,7 @@
                 
             </a>
             <div class = "pin-title-user">
+                
                 <p id = "pin-title">{{ pin.title }}</p>
                 <a id = "pin-user" href="#">
                     <img src="{{ pin.user.profile.photo.url }}"/> 

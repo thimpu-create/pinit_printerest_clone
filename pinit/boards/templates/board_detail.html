@@ -15,12 +15,15 @@
         <img style="object-fit: cover;" src="{{ board.cover.url }}" class="rounded-circle" width="60" height="60">
         <div class="mt-2">{{ board.description }}</div>
     </div>
+    
     <div class="col-md-2"></div>
 </div>
 <div class="row mt-5">
     {% for pin in pins %}
     <div class="img-container col-md-2 mb-3">
+        
         <a href="{% url 'pins:pin_detail' pin.id %}">
+            
             {% if pin.get_type == 'video' %}
                 <video autoplay muted loop class="video" >
                     <source src="{{ pin.file.url }}" >
@@ -40,6 +43,8 @@
             </ul>
         </div>
     </div>
+    
+    
     {% endfor %}
 </div>
 
